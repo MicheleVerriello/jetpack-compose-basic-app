@@ -3,13 +3,17 @@ package com.uniba.mv.sampleapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.uniba.mv.sampleapplication.scaffold.TopBar
 import com.uniba.mv.sampleapplication.ui.theme.SampleApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,7 +26,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+                    Greeting()
                 }
             }
         }
@@ -30,14 +34,21 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun Greeting() {
+    Scaffold(
+        topBar = { TopBar("title") },
+        bottomBar = { }
+    ) {
+        Box(modifier = Modifier.padding(it)) {
+
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     SampleApplicationTheme {
-        Greeting("Android")
+        Greeting()
     }
 }
